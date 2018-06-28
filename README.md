@@ -27,3 +27,14 @@ User stories
 - as a user, I should be able to send money to a selected recipient
 
 - as a user, for security, i should be able to check if a payment was successful
+
+Installation
+------------
+Clone or download this repo and navigate to the local repo/folder. Run the following command on the Linux/Unix console:
+    bundle install --path .bundle .
+
+Execute
+-------
+After installation, to execute run:
+    ruby app.rb .
+    
