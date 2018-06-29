@@ -11,7 +11,8 @@ end
 describe '#freshToken' do
     context 'takes HTTP response from authenticate' do
         it 'extracts token' do
-            freshToken.empty?
+            token = freshToken
+            !token.empty?
         end
     end
 end
