@@ -1,6 +1,8 @@
 require 'rest_client'
 require 'json'
+require 'envyable'
 
+Envyable.load('config/env.yml')
 
 class Authenticate
 
@@ -17,8 +19,8 @@ class Authenticate
 
     def self.postRequest
         values = '{
-            "username": "AmmarA",
-            "apikey": "0581938E7737A65B"
+            "username": ' + ENV["API_USERNAME"] + ',
+            "apikey": ' + ENV["API_KEY"] + '
             }'
         headers = {
             :content_type => 'application/json'
