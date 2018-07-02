@@ -4,12 +4,7 @@ require 'envyable'
 
 Envyable.load('config/env.yml')
 
-class Authenticate
-
-    def self.freshToken
-        tokenHash = JSON.parse(self.postRequest) 
-        tokenHash.fetch("token")
-    end 
+class Authenticate 
 
     def self.endPoint
         'https://coolpay.herokuapp.com/api/login'
@@ -19,14 +14,22 @@ class Authenticate
 
     def self.postRequest
         values = '{
-            "username": ' + ENV["API_USERNAME"] + ',
-            "apikey": ' + ENV["API_KEY"] + '
+            "username": "' + ENV['API_USERNAME'] + '",
+            "apikey": "' + ENV['API_KEY'] + '"
             }'
+
         headers = {
             :content_type => 'application/json'
             }
-        
-        RestClient.post self.endPoint, values, headers  
+        p Authenticate.endPoint 
+        p values
+        p headers
+        RestClient.post Authenticate.endPoint, values, headers  
+    end
+
+    def self.freshToken
+        tokenHash = JSON.parse(Authenticate.postRequest) 
+        tokenHash.fetch("token")
     end
     
 end

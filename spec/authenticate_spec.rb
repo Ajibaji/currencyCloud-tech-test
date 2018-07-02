@@ -3,6 +3,14 @@ require 'authentication'
 
 describe 'Authenticate' do
 
+    describe '.endPoint' do
+        context 'serves up the correct end-point' do
+            it 'returns string' do
+                expect(Authenticate.endPoint).to eql("https://coolpay.herokuapp.com/api/login")
+            end
+        end
+    end
+
     describe '.postRequest' do
         context 'POSTs name and API key' do
             it 'returns a token' do
@@ -30,13 +38,5 @@ describe 'Authenticate' do
             end
         end
     end
-
-    describe '.endPoint' do
-        context 'serves up the correct end-point' do
-            it 'returns string' do
-                expect(Authenticate.endPoint).to eql("https://coolpay.herokuapp.com/api/login")
-            end
-        end
-    end
-
+    
 end
