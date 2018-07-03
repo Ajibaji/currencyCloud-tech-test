@@ -1,6 +1,16 @@
 Fakebook/CoolPay integration
 ========
 
+Stack
+------
+- Ruby
+- Rspec
+
+Gems
+-------
+ - JSON - parsing JSON files
+ - Rest_client - for RESTful interaction. Small and light-weight but very functional too. Eliminated my need for Sinatra completely.
+
 Scenario
 --------
 Coolpay is a new company that allows to easily send money to friends through their API.
@@ -32,6 +42,10 @@ Installation
 ------------
 Clone or download this repo and navigate to the local repo/folder. Run the following command on the Linux/Unix console:
     ```bundle install --path .bundle ```
+
+In the root folder (of this app), create a folder called ```config``` and in there create a file called ```env.yml``` and enter your login name and API key in the following format:
+```API_USERNAME: '<username>'
+API_KEY: '<api_key>' ```
 
 Execute
 -------
