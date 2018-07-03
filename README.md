@@ -44,8 +44,8 @@ Clone or download this repo and navigate to the local repo/folder. Run the follo
     ```bundle install --path .bundle ```
 
 In the root folder (of this app), create a folder called ```config``` and in there create a file called ```env.yml``` and enter your login name and API key in the following format:
-```API_USERNAME: '<username>'
-API_KEY: '<api_key>' ```
+```API_USERNAME: '<username>'```
+```API_KEY: '<api_key>' ```
 
 Execute
 -------
