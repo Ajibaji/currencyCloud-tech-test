@@ -38,3 +38,13 @@ Execute
 After installation, to execute run:
     ```ruby app.rb ```
 
+
+
+If I had time
+-------------
+
+I would have liked to:
+ - do more error checking, especially on user input. 
+ - drill deeper on testing
+ - get a little more sleep (have a look a the time stamps on the commits)
+ - Make the UI much better
