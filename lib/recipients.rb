@@ -9,17 +9,36 @@ class Recipients
         :authorization => 'Bearer ' + Authenticate.freshToken
         }
         
-        RestClient.get Recipients.endPoint, headers
+        response = RestClient.get Recipients.endPoint, headers
     end
 
-    def self.listRecipients
+    def self.listRecipients(arguments = nil)
         hashOfJsonData = (JSON.parse(Recipients.getRecipients))
         recipientsIndex = hashOfJsonData.fetch("recipients")
 
-        recipientsIndex.each_with_index { |value, index| puts "#{index.to_i + 1} - #{value.fetch("name")}" }
+        if arguments == nil
+            recipientsIndex.each_with_index { |value, index| puts value.fetch("name")}
+            puts "\n\n\n"
+        end
+
+        return recipientsIndex
+    end
+
+    def self.selectRecipient
+        recipientsIndex = Recipients.listRecipients(1)
+        recipientsIndex.each_with_index { |value, index| 
+            puts "#{index.to_i + 1} - #{value.fetch("name")}" 
+        }
+        puts "Enter recipient number and press enter to make a transfer"
+        selection = gets.chomp.to_i
+        selection -= 1
+        recipientHash = recipientsIndex[selection]
+
+        Payments.makePayment(recipientHash.fetch("id"))
     end
 
     def self.inputNewRecipient
+        puts "Enter new recipient name: "
         name = gets.chomp
         Recipients.submitNewRecipient(name)
     end

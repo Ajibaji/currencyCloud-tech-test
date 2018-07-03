@@ -28,4 +28,25 @@ describe 'Payments' do
         end
     end
 
+    describe '.listPayments' do
+        context 'iterates through data from .getPayments' do 
+            it 'displays in list' do 
+                dummyJsonData = '{
+                    "payments": [
+                      {
+                        "id": "31db334f-9ac0-42cb-804b-09b2f899d4d2",
+                        "amount": "10.50",
+                        "currency": "GBP",
+                        "recipient_id": "6e7b146e-5957-11e6-8b77-86f30ca893d3",
+                        "status": "paid"
+                      }
+                    ]
+                  }'
+                allow(Payments).to receive(:getPayments).and_return(dummyJsonData)
+                
+                expect(Payments.listPayments[0].fetch("id")).to eql("31db334f-9ac0-42cb-804b-09b2f899d4d2")
+            end
+        end
+    end
+
 end

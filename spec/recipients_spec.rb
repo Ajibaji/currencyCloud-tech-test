@@ -55,7 +55,6 @@ describe 'Recipients' do
                 expect(Recipients.inputNewRecipient).to eql("good")
             end
         end 
-
     end
     
     describe '.submitNewRecipient' do
@@ -71,7 +70,33 @@ describe 'Recipients' do
                 expect(methodCall.code).to eql(201)
             end
         end 
+    end
 
+    describe '.selectRecipient' do
+        context 'user selection' do
+            it 'pass selection to Payments.makePayment' do
+                dummyHash = [
+                    {"name"=>"Jake McFriend", "id"=>"5bdcc9cb-2b98-402e-8001-6924eecebce2"}, 
+                    {"name"=>"Gordon Gekko", "id"=>"5b10c9ac-2955-409a-98a8-7a73ea25751a"}, 
+                    {"name"=>"Naughty Sheikh", "id"=>"cdad7bbc-6b78-4602-abfd-ae6e0187cf24"}, 
+                    {"name"=>"Mr Burlusconi", "id"=>"3edbfa73-1320-4dc8-82c9-594e1c07312c"}
+                ]
+                 
+                allow(Object).to receive(:gets).and_return("1")
+                allow(Recipients).to receive(:listRecipients).and_return(dummyHash)
+                allow(Payments).to receive(:makePayment)
+                
+                Recipients.selectRecipient
+
+                expect(Payments).to have_received(:makePayment).with("5bdcc9cb-2b98-402e-8001-6924eecebce2")
+
+                # allow(Payments).to receive(:makePayment) do |*args|
+                    # expect(args[0]).to eql("5bdcc9cb-2b98-402e-8001-6924eecebce2")
+                # end
+
+                # (Payments).should_receive(:makePayment).with("5bdcc9cb-2b98-402e-8001-6924eecebce2")
+            end
+        end
     end
 
 end

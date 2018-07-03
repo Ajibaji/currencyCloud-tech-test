@@ -21,9 +21,6 @@ class Authenticate
         headers = {
             :content_type => 'application/json'
             }
-        p Authenticate.endPoint 
-        p values
-        p headers
         RestClient.post Authenticate.endPoint, values, headers  
     end
 
