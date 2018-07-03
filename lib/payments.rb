@@ -3,9 +3,9 @@ require 'json'
 
 class Payments
 
-    def initialize
+    # def initialize
         @@lastPaymentId = nil
-    end 
+    # end 
 
     def self.getPayments
         headers = {

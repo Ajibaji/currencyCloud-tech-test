@@ -62,4 +62,3 @@ I would have liked to:
  - drill deeper on testing
  - get a little more sleep (have a look a the time stamps on the commits)
  - Make the UI much better
- - Test the one method I didn't get time to!
